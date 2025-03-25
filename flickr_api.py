@@ -18,7 +18,7 @@ def fetch_flickr_images(keyword, age, limit):
             "format": "json",
             "nojsoncallback": 1,
             "sort": "date-posted-asc",
-            "extras": "url_o,tags,title,date_upload",
+            "extras": "url_s,tags,title,date_upload",
             "per_page": BATCH_SIZE,
             "min_upload_date": age,
             "page": page,
@@ -32,7 +32,7 @@ def fetch_flickr_images(keyword, age, limit):
             photos = data.get("photos", {}).get("photo", [])
 
             for photo in photos:
-                img_url = photo.get("url_o")
+                img_url = photo.get("url_s")
                 tags = photo.get("tags", "").lower()
                 title = photo.get("title", "").lower()
 
